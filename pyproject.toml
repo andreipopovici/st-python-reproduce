@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "st-python-reproduce"
+version = "0.1.0"
+description = ""
+authors = ["Andrei Popovici <apo@digitaltransitions.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.110.0"
+supertokens-python = "^0.18.9"
+uvicorn = "^0.29.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

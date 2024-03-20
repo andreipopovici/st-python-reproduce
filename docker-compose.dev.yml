@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  st-python-reproduce:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "poetry run uvicorn app.main:app --host 0.0.0.0 --port 80 --reload"
+    volumes:
+      - .:/code
+    ports:
+      - 8000:80
+    networks:
+      - custom
+    depends_on:
+      - supertokens
+    restart: unless-stopped
+
+  supertokens:
+    image: registry.supertokens.io/supertokens/supertokens-postgresql:latest
+    ports:
+      - 3567:3567
+    networks:
+      - custom
+    environment:
+      - API_KEYS=test-key-that-is-long-enough-to-use
+    restart: unless-stopped
+
+networks:
+  custom:
+    driver: bridge

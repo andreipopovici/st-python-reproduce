@@ -1,0 +1,26 @@
+meta {
+  name: Sign in
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/auth/signin
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "formFields": [
+      {
+        "id": "email",
+        "value": "test@example.com"
+      },
+      {
+        "id": "password",
+        "value": "testPass123"
+      }
+    ]
+  }
+}
